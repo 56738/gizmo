@@ -17,9 +17,11 @@ import me.m56738.gizmo.bukkit.viaversion.v1_13.ViaParticleSpawner_v1_13;
 import me.m56738.gizmo.bukkit.viaversion.v1_19_4.ViaCubeGizmoFactory_v1_19_4;
 import me.m56738.gizmo.bukkit.viaversion.v1_20_2.ViaCubeGizmoFactory_v1_20_2;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@ApiStatus.Internal
 public class ViaGizmos implements BukkitGizmos {
     private static @Nullable EntityIdProvider ID_PROVIDER;
 
@@ -35,7 +37,7 @@ public class ViaGizmos implements BukkitGizmos {
     private final VersionedPacketTransformer<ClientboundPackets1_19_4, ?> transformer_v1_19_4;
     private final VersionedPacketTransformer<ClientboundPackets1_20_2, ?> transformer_v1_20_2;
 
-    public ViaGizmos(BukkitGizmos fallback) {
+    private ViaGizmos(BukkitGizmos fallback) {
         this.fallback = fallback;
         this.transformer_v1_13 = Via.getManager().getProtocolManager().createPacketTransformer(ProtocolVersion.v1_13, ClientboundPackets1_13.class, null);
         this.transformer_v1_19_4 = Via.getManager().getProtocolManager().createPacketTransformer(ProtocolVersion.v1_19_4, ClientboundPackets1_19_4.class, null);
@@ -68,12 +70,12 @@ public class ViaGizmos implements BukkitGizmos {
 
         if (version.newerThanOrEqualTo(ProtocolVersion.v1_20_2) && serverVersion.olderThan(ProtocolVersion.v1_20_2) && ID_PROVIDER != null) {
             // use display entities with teleport interpolation
-            return GizmoFactory.of(new ViaCubeGizmoFactory_v1_20_2(transformer_v1_20_2, connection, ID_PROVIDER));
+            return new ViaCubeGizmoFactory_v1_20_2(transformer_v1_20_2, connection, ID_PROVIDER);
         }
 
         if (version.newerThanOrEqualTo(ProtocolVersion.v1_19_4) && serverVersion.olderThan(ProtocolVersion.v1_19_4) && ID_PROVIDER != null) {
             // use display entities without teleport interpolation
-            return GizmoFactory.of(new ViaCubeGizmoFactory_v1_19_4(transformer_v1_19_4, connection, ID_PROVIDER));
+            return new ViaCubeGizmoFactory_v1_19_4(transformer_v1_19_4, connection, ID_PROVIDER);
         }
 
         if (version.newerThanOrEqualTo(ProtocolVersion.v1_13) && serverVersion.olderThan(ProtocolVersion.v1_13)) {

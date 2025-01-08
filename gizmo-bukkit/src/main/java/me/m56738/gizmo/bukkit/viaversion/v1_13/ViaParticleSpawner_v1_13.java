@@ -8,8 +8,10 @@ import me.m56738.gizmo.api.GizmoColor;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawner;
 import me.m56738.gizmo.bukkit.viaversion.cube.GizmoTracker;
 import org.bukkit.Color;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3dc;
 
+@ApiStatus.Internal
 public class ViaParticleSpawner_v1_13 implements ParticleSpawner {
     private final VersionedPacketTransformer<ClientboundPackets1_13, ?> transformer;
     private final UserConnection connection;

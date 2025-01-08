@@ -6,6 +6,7 @@ import me.m56738.gizmo.bukkit.particle.ParticleSpawnerFactory;
 import me.m56738.gizmo.bukkit.util.ReflectionUtil;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3dc;
 
@@ -14,6 +15,7 @@ import java.lang.invoke.MethodHandle;
 import static java.lang.invoke.MethodHandles.publicLookup;
 import static java.lang.invoke.MethodType.methodType;
 
+@ApiStatus.Internal
 public class ParticleSpawnerFactory_v1_8 implements ParticleSpawnerFactory {
     private final Object particleType;
     private final MethodHandle createPacket;

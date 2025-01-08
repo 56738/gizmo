@@ -1,7 +1,9 @@
 package me.m56738.gizmo.bukkit.util;
 
 import org.bukkit.Bukkit;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.Internal
 public final class ReflectionUtil {
     private static final String CB_PACKAGE = Bukkit.getServer().getClass().getPackage().getName();
     private static final String NMS_PACKAGE = CB_PACKAGE.replace("org.bukkit.craftbukkit", "net.minecraft.server");

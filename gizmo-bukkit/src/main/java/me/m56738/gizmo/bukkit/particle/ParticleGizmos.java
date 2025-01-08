@@ -7,11 +7,13 @@ import me.m56738.gizmo.bukkit.particle.v1_8.ParticleSpawnerFactory_v1_8;
 import me.m56738.gizmo.bukkit.particle.v1_8.SpigotParticleSpawnerFactory_v1_8;
 import me.m56738.gizmo.bukkit.particle.v1_9.ParticleSpawnerFactory_v1_9;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
 
+@ApiStatus.Internal
 public class ParticleGizmos implements BukkitGizmos {
     private static final List<ParticleSpawnerFactoryProvider> PROVIDERS = Arrays.asList(
             ParticleSpawnerFactory_v1_13::new,
@@ -21,7 +23,7 @@ public class ParticleGizmos implements BukkitGizmos {
 
     private final ParticleSpawnerFactory particleSpawnerFactory;
 
-    ParticleGizmos(ParticleSpawnerFactory particleSpawnerFactory) {
+    private ParticleGizmos(ParticleSpawnerFactory particleSpawnerFactory) {
         this.particleSpawnerFactory = particleSpawnerFactory;
     }
 

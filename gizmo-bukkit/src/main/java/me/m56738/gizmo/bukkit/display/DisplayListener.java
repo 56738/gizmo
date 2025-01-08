@@ -5,7 +5,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.EntityTeleportEvent;
+import org.jetbrains.annotations.ApiStatus;
 
+@ApiStatus.Internal
 public class DisplayListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onSpawn(EntitySpawnEvent event) {

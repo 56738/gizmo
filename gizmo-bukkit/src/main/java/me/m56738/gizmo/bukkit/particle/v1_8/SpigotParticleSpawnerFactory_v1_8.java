@@ -7,6 +7,7 @@ import org.bukkit.Color;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3dc;
 
@@ -15,6 +16,7 @@ import java.lang.invoke.MethodHandle;
 import static java.lang.invoke.MethodHandles.publicLookup;
 import static java.lang.invoke.MethodType.methodType;
 
+@ApiStatus.Internal
 public class SpigotParticleSpawnerFactory_v1_8 implements ParticleSpawnerFactory {
     private final MethodHandle playEffect;
     private final Effect effect;

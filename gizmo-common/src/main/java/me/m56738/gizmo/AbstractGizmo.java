@@ -1,5 +1,8 @@
-package me.m56738.gizmo.api;
+package me.m56738.gizmo;
 
+import me.m56738.gizmo.api.Gizmo;
+import me.m56738.gizmo.api.GizmoColor;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaterniond;
 import org.joml.Quaterniondc;
@@ -8,6 +11,7 @@ import org.joml.Vector3dc;
 
 import java.util.Objects;
 
+@ApiStatus.Internal
 public abstract class AbstractGizmo implements Gizmo {
     private final Vector3d position = new Vector3d();
     private final Vector3d offset = new Vector3d();

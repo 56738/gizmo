@@ -1,6 +1,7 @@
 package me.m56738.gizmo.bukkit.display;
 
 import org.bukkit.util.Transformation;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
@@ -10,6 +11,7 @@ import java.lang.invoke.MethodHandle;
 import static java.lang.invoke.MethodHandles.publicLookup;
 import static java.lang.invoke.MethodType.methodType;
 
+@ApiStatus.Internal
 public final class JOMLMapper {
     private final MethodHandle createVector3f;
     private final MethodHandle createQuaternionf;

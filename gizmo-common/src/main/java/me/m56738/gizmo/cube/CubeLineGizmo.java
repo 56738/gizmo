@@ -1,28 +1,19 @@
-package me.m56738.gizmo.api;
+package me.m56738.gizmo.cube;
 
+import me.m56738.gizmo.AbstractLineGizmo;
+import me.m56738.gizmo.api.GizmoAxis;
+import me.m56738.gizmo.api.GizmoColor;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Quaterniondc;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
 
+@ApiStatus.Internal
 class CubeLineGizmo extends AbstractLineGizmo {
     private final CubeGizmo cube;
 
     public CubeLineGizmo(CubeGizmo cube) {
         this.cube = cube;
-    }
-
-    private static void setValue(GizmoAxis axis, Vector3d vector, double value) {
-        switch (axis) {
-            case X:
-                vector.x = value;
-                break;
-            case Y:
-                vector.y = value;
-                break;
-            case Z:
-                vector.z = value;
-                break;
-        }
     }
 
     @Override

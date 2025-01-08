@@ -1,5 +1,6 @@
 package me.m56738.gizmo.api;
 
+import me.m56738.gizmo.AbstractCircleGizmo;
 import org.joml.Math;
 import org.joml.Quaterniond;
 import org.joml.Vector3d;

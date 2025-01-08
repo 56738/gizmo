@@ -1,11 +1,13 @@
 package me.m56738.gizmo.bukkit.display;
 
-import me.m56738.gizmo.api.CubeGizmo;
-import me.m56738.gizmo.api.CubeGizmoFactory;
+import me.m56738.gizmo.cube.CubeGizmo;
+import me.m56738.gizmo.cube.CubeGizmoFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+@ApiStatus.Internal
 public class DisplayCubeGizmoFactory implements CubeGizmoFactory {
     private final Player player;
     private final Plugin plugin;

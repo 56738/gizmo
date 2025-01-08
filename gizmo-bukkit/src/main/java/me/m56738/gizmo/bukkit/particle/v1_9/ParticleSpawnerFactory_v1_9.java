@@ -6,9 +6,11 @@ import me.m56738.gizmo.bukkit.particle.ParticleSpawnerFactory;
 import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3dc;
 
+@ApiStatus.Internal
 public class ParticleSpawnerFactory_v1_9 implements ParticleSpawnerFactory {
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public ParticleSpawnerFactory_v1_9() throws Throwable {

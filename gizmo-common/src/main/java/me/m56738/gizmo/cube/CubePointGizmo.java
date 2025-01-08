@@ -1,9 +1,12 @@
-package me.m56738.gizmo.api;
+package me.m56738.gizmo.cube;
 
+import me.m56738.gizmo.AbstractPointGizmo;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Quaterniondc;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
 
+@ApiStatus.Internal
 class CubePointGizmo extends AbstractPointGizmo {
     private final CubeGizmo cube;
 

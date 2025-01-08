@@ -1,7 +1,8 @@
 package me.m56738.gizmo.bukkit.particle;
 
-import me.m56738.gizmo.api.AbstractCircleGizmo;
+import me.m56738.gizmo.AbstractCircleGizmo;
 import me.m56738.gizmo.api.GizmoColor;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Math;
 import org.joml.Quaterniondc;
 import org.joml.Vector3d;
@@ -9,6 +10,7 @@ import org.joml.Vector3d;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApiStatus.Internal
 public class ParticleCircleGizmo extends AbstractCircleGizmo {
     private final ParticleSpawner particleSpawner;
     private final List<Vector3d> positions = new ArrayList<>();

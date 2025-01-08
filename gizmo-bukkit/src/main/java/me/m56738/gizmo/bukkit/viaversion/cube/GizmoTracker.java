@@ -2,12 +2,14 @@ package me.m56738.gizmo.bukkit.viaversion.cube;
 
 import com.viaversion.viaversion.api.connection.StorableObject;
 import com.viaversion.viaversion.api.connection.UserConnection;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+@ApiStatus.Internal
 public class GizmoTracker implements StorableObject {
     private final Set<ViaCubeGizmo> gizmos = new HashSet<>();
 

@@ -1,12 +1,16 @@
-package me.m56738.gizmo.api;
+package me.m56738.gizmo;
 
+import me.m56738.gizmo.api.CircleGizmo;
+import me.m56738.gizmo.api.GizmoAxis;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public abstract class AbstractLineGizmo extends AbstractGizmo implements LineGizmo {
+@ApiStatus.Internal
+public abstract class AbstractCircleGizmo extends AbstractGizmo implements CircleGizmo {
     private GizmoAxis axis = DEFAULT_AXIS;
-    private double length = DEFAULT_LENGTH;
+    private double radius = DEFAULT_RADIUS;
     private double width = DEFAULT_WIDTH;
 
     @Override
@@ -23,14 +27,14 @@ public abstract class AbstractLineGizmo extends AbstractGizmo implements LineGiz
     }
 
     @Override
-    public double getLength() {
-        return length;
+    public double getRadius() {
+        return radius;
     }
 
     @Override
-    public void setLength(double length) {
-        if (!Objects.equals(this.length, length)) {
-            this.length = length;
+    public void setRadius(double radius) {
+        if (!Objects.equals(this.radius, radius)) {
+            this.radius = radius;
             markDirty();
         }
     }

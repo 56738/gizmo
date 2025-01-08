@@ -2,9 +2,11 @@ package me.m56738.gizmo.bukkit.viaversion.util;
 
 import com.viaversion.viaversion.api.minecraft.Quaternion;
 import com.viaversion.viaversion.api.minecraft.Vector3f;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
+@ApiStatus.Internal
 public final class ViaUtil {
     private ViaUtil() {
     }

@@ -1,13 +1,15 @@
 package me.m56738.gizmo.bukkit.particle;
 
-import me.m56738.gizmo.api.AbstractLineGizmo;
+import me.m56738.gizmo.AbstractLineGizmo;
 import me.m56738.gizmo.api.GizmoColor;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Math;
 import org.joml.Vector3d;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@ApiStatus.Internal
 public class ParticleLineGizmo extends AbstractLineGizmo {
     private final ParticleSpawner particleSpawner;
     private final List<Vector3d> positions = new ArrayList<>();

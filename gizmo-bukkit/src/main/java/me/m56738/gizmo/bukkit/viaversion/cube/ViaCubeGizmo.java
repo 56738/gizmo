@@ -2,8 +2,9 @@ package me.m56738.gizmo.bukkit.viaversion.cube;
 
 import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.api.minecraft.entitydata.EntityData;
-import me.m56738.gizmo.api.CubeGizmo;
+import me.m56738.gizmo.cube.CubeGizmo;
 import me.m56738.gizmo.api.GizmoColor;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaterniond;
 import org.joml.Quaterniondc;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@ApiStatus.Internal
 public abstract class ViaCubeGizmo implements CubeGizmo {
     private final GizmoTracker tracker;
     private final List<EntityData> changedData = new ArrayList<>();

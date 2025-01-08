@@ -1,8 +1,10 @@
 package me.m56738.gizmo.bukkit.particle;
 
-import me.m56738.gizmo.api.AbstractPointGizmo;
+import me.m56738.gizmo.AbstractPointGizmo;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3d;
 
+@ApiStatus.Internal
 public class ParticlePointGizmo extends AbstractPointGizmo {
     private final ParticleSpawner particleSpawner;
     private boolean visible;

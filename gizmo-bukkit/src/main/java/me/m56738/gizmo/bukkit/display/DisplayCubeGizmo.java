@@ -1,6 +1,6 @@
 package me.m56738.gizmo.bukkit.display;
 
-import me.m56738.gizmo.api.AbstractCubeGizmo;
+import me.m56738.gizmo.AbstractCubeGizmo;
 import me.m56738.gizmo.api.GizmoColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -12,6 +12,7 @@ import org.bukkit.entity.Display.Billboard;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaterniond;
@@ -24,6 +25,7 @@ import java.util.EnumMap;
 import static java.lang.invoke.MethodHandles.publicLookup;
 import static java.lang.invoke.MethodType.methodType;
 
+@ApiStatus.Internal
 public class DisplayCubeGizmo extends AbstractCubeGizmo {
     private static final Quaterniondc IDENTITY = new Quaterniond();
     private static final EnumMap<GizmoColor, BlockData> COLORS = new EnumMap<>(GizmoColor.class);

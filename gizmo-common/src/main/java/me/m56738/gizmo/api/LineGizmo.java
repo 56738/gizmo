@@ -7,10 +7,6 @@ public interface LineGizmo extends Gizmo {
     double DEFAULT_LENGTH = 1.0;
     double DEFAULT_WIDTH = 1.0 / 32;
 
-    static @NotNull LineGizmo of(@NotNull CubeGizmo cube) {
-        return new CubeLineGizmo(cube);
-    }
-
     @NotNull GizmoAxis getAxis();
 
     void setAxis(@NotNull GizmoAxis axis);

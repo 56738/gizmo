@@ -4,8 +4,10 @@ import me.m56738.gizmo.api.CircleGizmo;
 import me.m56738.gizmo.api.GizmoFactory;
 import me.m56738.gizmo.api.LineGizmo;
 import me.m56738.gizmo.api.PointGizmo;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+@ApiStatus.Internal
 public class ParticleGizmoFactory implements GizmoFactory {
     private final ParticleSpawner particleSpawner;
 

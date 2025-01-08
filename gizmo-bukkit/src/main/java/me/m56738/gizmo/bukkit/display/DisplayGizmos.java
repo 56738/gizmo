@@ -6,14 +6,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+@ApiStatus.Internal
 public class DisplayGizmos implements BukkitGizmos {
     private final Plugin plugin;
     private final JOMLMapper mapper;
     private final Listener listener;
 
-    public DisplayGizmos(Plugin plugin, JOMLMapper mapper) {
+    private DisplayGizmos(Plugin plugin, JOMLMapper mapper) {
         this.plugin = plugin;
         this.mapper = mapper;
         this.listener = new DisplayListener();
@@ -30,7 +32,7 @@ public class DisplayGizmos implements BukkitGizmos {
 
     @Override
     public @NotNull GizmoFactory player(@NotNull Player player) {
-        return GizmoFactory.of(new DisplayCubeGizmoFactory(player, plugin, mapper));
+        return new DisplayCubeGizmoFactory(player, plugin, mapper);
     }
 
     @Override

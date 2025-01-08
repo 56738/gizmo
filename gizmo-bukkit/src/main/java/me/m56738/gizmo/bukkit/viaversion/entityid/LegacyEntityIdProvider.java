@@ -1,7 +1,10 @@
 package me.m56738.gizmo.bukkit.viaversion.entityid;
 
+import org.jetbrains.annotations.ApiStatus;
+
 import java.lang.reflect.Field;
 
+@ApiStatus.Internal
 public class LegacyEntityIdProvider implements EntityIdProvider {
     private final Field counter;
 

@@ -10,12 +10,14 @@ import com.viaversion.viaversion.protocols.v1_20to1_20_2.packet.ClientboundPacke
 import me.m56738.gizmo.api.GizmoColor;
 import me.m56738.gizmo.bukkit.viaversion.cube.ViaCubeGizmo;
 import me.m56738.gizmo.bukkit.viaversion.util.ViaUtil;
+import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3dc;
 
 import java.util.EnumMap;
 import java.util.List;
 import java.util.UUID;
 
+@ApiStatus.Internal
 public class ViaCubeGizmo_v1_20_2 extends ViaCubeGizmo {
     private static final EnumMap<GizmoColor, Integer> COLORS = new EnumMap<>(GizmoColor.class);
 

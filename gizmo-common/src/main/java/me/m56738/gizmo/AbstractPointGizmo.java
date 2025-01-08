@@ -1,7 +1,11 @@
-package me.m56738.gizmo.api;
+package me.m56738.gizmo;
+
+import me.m56738.gizmo.api.PointGizmo;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Objects;
 
+@ApiStatus.Internal
 public abstract class AbstractPointGizmo extends AbstractGizmo implements PointGizmo {
     private double size = DEFAULT_SIZE;
     private boolean billboard = DEFAULT_BILLBOARD;
