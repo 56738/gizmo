@@ -1,5 +1,6 @@
 package me.m56738.gizmo.bukkit.particle;
 
+import me.m56738.gizmo.api.BoxGizmo;
 import me.m56738.gizmo.api.CircleGizmo;
 import me.m56738.gizmo.api.GizmoFactory;
 import me.m56738.gizmo.api.LineGizmo;
@@ -28,6 +29,11 @@ public class ParticleGizmoFactory implements GizmoFactory {
     @Override
     public @NotNull CircleGizmo createCircle() {
         return new ParticleCircleGizmo(particleSpawner);
+    }
+
+    @Override
+    public @NotNull BoxGizmo createBox() {
+        return BoxGizmo.of(this::createLine);
     }
 
     @Override

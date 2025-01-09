@@ -1,5 +1,6 @@
 package me.m56738.gizmo.cube;
 
+import me.m56738.gizmo.api.BoxGizmo;
 import me.m56738.gizmo.api.CircleGizmo;
 import me.m56738.gizmo.api.GizmoFactory;
 import me.m56738.gizmo.api.LineGizmo;
@@ -24,5 +25,9 @@ public interface CubeGizmoFactory extends GizmoFactory {
     @Override
     default @NotNull CircleGizmo createCircle() {
         return CircleGizmo.of(16, this::createLine);
+    }
+
+    default @NotNull BoxGizmo createBox() {
+        return BoxGizmo.of(this::createLine);
     }
 }

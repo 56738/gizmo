@@ -4,6 +4,8 @@ import me.m56738.gizmo.intersection.SimpleIntersection;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Intersectiond;
+import org.joml.Quaterniond;
+import org.joml.Quaterniondc;
 import org.joml.Vector2d;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
@@ -117,6 +119,25 @@ public interface RayCursor extends Cursor {
     default @Nullable Intersection intersectBox(@NotNull Vector3dc min, @NotNull Vector3dc max) {
         Vector2d result = new Vector2d();
         int status = Intersectiond.intersectLineSegmentAab(origin(), end(), min, max, result);
+        if (status != Intersectiond.OUTSIDE) {
+            return new SimpleIntersection(origin().fma(result.x, direction(), new Vector3d()));
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    default @Nullable Intersection intersectBox(@NotNull Vector3dc min, @NotNull Vector3dc max, @NotNull Vector3dc center, @NotNull Quaterniondc rotation) {
+        if (rotation.equals(0.0, 0.0, 0.0, 1.0)) {
+            return intersectBox(min, max);
+        }
+
+        Quaterniondc inverseRotation = rotation.conjugate(new Quaterniond());
+        Vector3dc relativeOrigin = origin().sub(center, new Vector3d()).rotate(inverseRotation).add(center);
+        Vector3dc relativeEnd = end().sub(center, new Vector3d()).rotate(inverseRotation).add(center);
+
+        Vector2d result = new Vector2d();
+        int status = Intersectiond.intersectLineSegmentAab(relativeOrigin, relativeEnd, min, max, result);
         if (status != Intersectiond.OUTSIDE) {
             return new SimpleIntersection(origin().fma(result.x, direction(), new Vector3d()));
         } else {

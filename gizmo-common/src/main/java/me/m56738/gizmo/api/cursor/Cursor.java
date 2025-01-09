@@ -2,6 +2,7 @@ package me.m56738.gizmo.api.cursor;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
 public interface Cursor {
@@ -14,6 +15,8 @@ public interface Cursor {
     @Nullable Intersection intersectPlane(@NotNull Vector3dc point, @NotNull Vector3dc normal, double range);
 
     @Nullable Intersection intersectBox(@NotNull Vector3dc min, @NotNull Vector3dc max);
+
+    @Nullable Intersection intersectBox(@NotNull Vector3dc min, @NotNull Vector3dc max, @NotNull Vector3dc center, @NotNull Quaterniondc rotation);
 
     @Nullable Intersection intersectCircle(@NotNull Vector3dc center, @NotNull Vector3dc axis, double radius, double threshold);
 }

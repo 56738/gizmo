@@ -9,5 +9,7 @@ public interface GizmoFactory {
 
     @NotNull CircleGizmo createCircle();
 
+    @NotNull BoxGizmo createBox();
+
     boolean isVisibleThroughWalls();
 }
