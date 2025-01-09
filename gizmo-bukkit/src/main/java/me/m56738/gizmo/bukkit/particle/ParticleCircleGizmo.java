@@ -48,26 +48,11 @@ public class ParticleCircleGizmo extends AbstractCircleGizmo {
     private void updatePositions() {
         double radius = getRadius();
 
-        Vector3d axis = new Vector3d();
-        Vector3d offset = new Vector3d();
-        switch (getAxis()) {
-            case X:
-                axis.x = 1;
-                offset.z = radius;
-                break;
-            case Y:
-                axis.y = 1;
-                offset.x = radius;
-                break;
-            case Z:
-                axis.z = 1;
-                offset.y = radius;
-                break;
-        }
-
+        Vector3d axis = new Vector3d(getAxis().direction());
+        Vector3d offset = new Vector3d(getAxis().next().direction()).mul(radius);
         Quaterniondc rotation = getRotation();
-        offset.rotate(rotation);
         axis.rotate(rotation);
+        offset.rotate(rotation);
 
         double axisX = axis.x();
         double axisY = axis.y();

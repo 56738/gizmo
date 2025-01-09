@@ -47,23 +47,12 @@ class CubeLineGizmo extends AbstractLineGizmo {
         GizmoColor color = getColor();
 
         Vector3d translation = new Vector3d(-width / 2);
-        Vector3d scale = new Vector3d(width);
-        switch (axis) {
-            case X:
-                translation.x = 0;
-                scale.x = length;
-                break;
-            case Y:
-                translation.y = 0;
-                scale.y = length;
-                break;
-            case Z:
-                translation.z = 0;
-                scale.z = length;
-                break;
-        }
+        axis.setValue(translation, 0);
         translation.rotate(rotation);
         translation.add(offset);
+
+        Vector3d scale = new Vector3d(width);
+        axis.setValue(scale, length);
 
         cube.setPosition(position);
         cube.setOffset(translation);

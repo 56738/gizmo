@@ -1,8 +1,11 @@
 package me.m56738.gizmo;
 
+import me.m56738.gizmo.api.cursor.Cursor;
+import me.m56738.gizmo.api.cursor.Intersection;
 import me.m56738.gizmo.cube.CubeGizmo;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
 
@@ -37,5 +40,10 @@ public abstract class AbstractCubeGizmo extends AbstractGizmo implements CubeGiz
             this.billboard = billboard;
             markDirty();
         }
+    }
+
+    @Override
+    public @Nullable Intersection intersect(@NotNull Cursor cursor, double threshold) {
+        return null;
     }
 }

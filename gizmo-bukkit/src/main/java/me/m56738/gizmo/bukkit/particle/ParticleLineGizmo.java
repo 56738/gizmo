@@ -56,18 +56,7 @@ public class ParticleLineGizmo extends AbstractLineGizmo {
             positions.remove(positions.size() - 1);
         }
 
-        Vector3d offset = new Vector3d();
-        switch (getAxis()) {
-            case X:
-                offset.x = length / (count - 1);
-                break;
-            case Y:
-                offset.y = length / (count - 1);
-                break;
-            case Z:
-                offset.z = length / (count - 1);
-                break;
-        }
+        Vector3d offset = getAxis().direction().mul(length / (count - 1), new Vector3d());
         offset.rotate(getRotation());
 
         Vector3d position = getPosition().add(getOffset(), new Vector3d());

@@ -2,10 +2,13 @@ package me.m56738.gizmo.bukkit.viaversion.cube;
 
 import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.api.minecraft.entitydata.EntityData;
-import me.m56738.gizmo.cube.CubeGizmo;
 import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.cursor.Cursor;
+import me.m56738.gizmo.api.cursor.Intersection;
+import me.m56738.gizmo.cube.CubeGizmo;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Quaterniond;
 import org.joml.Quaterniondc;
 import org.joml.Vector3d;
@@ -113,6 +116,11 @@ public abstract class ViaCubeGizmo implements CubeGizmo {
             this.billboard = billboard;
             this.billboardChanged = true;
         }
+    }
+
+    @Override
+    public @Nullable Intersection intersect(@NotNull Cursor cursor, double threshold) {
+        return null;
     }
 
     @Override

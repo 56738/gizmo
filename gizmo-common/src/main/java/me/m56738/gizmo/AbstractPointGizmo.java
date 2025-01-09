@@ -1,7 +1,12 @@
 package me.m56738.gizmo;
 
 import me.m56738.gizmo.api.PointGizmo;
+import me.m56738.gizmo.api.cursor.Cursor;
+import me.m56738.gizmo.api.cursor.Intersection;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3d;
 
 import java.util.Objects;
 
@@ -34,5 +39,11 @@ public abstract class AbstractPointGizmo extends AbstractGizmo implements PointG
             this.billboard = billboard;
             markDirty();
         }
+    }
+
+    @Override
+    public @Nullable Intersection intersect(@NotNull Cursor cursor, double threshold) {
+        Vector3d position = getPosition().add(getOffset(), new Vector3d());
+        return cursor.intersectPoint(position, threshold);
     }
 }

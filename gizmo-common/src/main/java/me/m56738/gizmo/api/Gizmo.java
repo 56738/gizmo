@@ -1,6 +1,9 @@
 package me.m56738.gizmo.api;
 
+import me.m56738.gizmo.api.cursor.Cursor;
+import me.m56738.gizmo.api.cursor.Intersection;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
@@ -22,6 +25,8 @@ public interface Gizmo {
     @NotNull GizmoColor getColor();
 
     void setColor(@NotNull GizmoColor color);
+
+    @Nullable Intersection intersect(@NotNull Cursor cursor, double threshold);
 
     void show();
 
