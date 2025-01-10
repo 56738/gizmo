@@ -8,6 +8,14 @@ import org.joml.Vector3dc;
 
 @ApiStatus.NonExtendable
 public interface Cursor {
+    static @NotNull Cursor of(@NotNull Vector3dc origin, @NotNull Vector3dc direction, double length) {
+        return new RayCursor(origin, direction, length);
+    }
+
+    static @NotNull Cursor of(@NotNull Vector3dc origin, @NotNull Vector3dc end) {
+        return new RayCursor(origin, end);
+    }
+
     @Nullable Intersection intersectPoint(@NotNull Vector3dc position, double threshold);
 
     @Nullable Intersection intersectLine(@NotNull Vector3dc start, @NotNull Vector3dc end, double threshold);
