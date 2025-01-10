@@ -1,7 +1,7 @@
 package me.m56738.gizmo.bukkit.display;
 
 import me.m56738.gizmo.AbstractCubeGizmo;
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -20,7 +20,8 @@ import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
 import java.lang.invoke.MethodHandle;
-import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.lang.invoke.MethodHandles.publicLookup;
 import static java.lang.invoke.MethodType.methodType;
@@ -28,7 +29,7 @@ import static java.lang.invoke.MethodType.methodType;
 @ApiStatus.Internal
 public class DisplayCubeGizmo extends AbstractCubeGizmo {
     private static final Quaterniondc IDENTITY = new Quaterniond();
-    private static final EnumMap<GizmoColor, BlockData> COLORS = new EnumMap<>(GizmoColor.class);
+    private static final Map<GizmoColor, BlockData> COLORS = new HashMap<>();
     private static final MethodHandle TELEPORT_DURATION_SETTER = findTeleportDurationSetter();
 
     static {
@@ -126,7 +127,7 @@ public class DisplayCubeGizmo extends AbstractCubeGizmo {
     protected void update(@NotNull BlockDisplay entity) {
         GizmoColor color = getColor();
         entity.setBlock(COLORS.get(color));
-        entity.setGlowColorOverride(Color.fromRGB(color.getRGB()));
+        entity.setGlowColorOverride(Color.fromRGB(color.asRGB()));
         entity.setTransformation(mapper.createTransformation(getOffset(), getRotation(), getScale(), IDENTITY));
         entity.setBillboard(isBillboard() ? Billboard.CENTER : Billboard.FIXED);
         entity.setInterpolationDelay(0);

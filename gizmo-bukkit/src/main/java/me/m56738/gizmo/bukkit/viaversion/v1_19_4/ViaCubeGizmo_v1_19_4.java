@@ -7,19 +7,20 @@ import com.viaversion.viaversion.api.protocol.packet.VersionedPacketTransformer;
 import com.viaversion.viaversion.api.type.Types;
 import com.viaversion.viaversion.api.type.types.version.Types1_19_4;
 import com.viaversion.viaversion.protocols.v1_19_3to1_19_4.packet.ClientboundPackets1_19_4;
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.bukkit.viaversion.cube.ViaCubeGizmo;
 import me.m56738.gizmo.bukkit.viaversion.util.ViaUtil;
 import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3dc;
 
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @ApiStatus.Internal
 public class ViaCubeGizmo_v1_19_4 extends ViaCubeGizmo {
-    private static final EnumMap<GizmoColor, Integer> COLORS = new EnumMap<>(GizmoColor.class);
+    private static final Map<GizmoColor, Integer> COLORS = new HashMap<>();
 
     static {
         COLORS.put(GizmoColor.WHITE, 12572);
@@ -134,7 +135,7 @@ public class ViaCubeGizmo_v1_19_4 extends ViaCubeGizmo {
     @Override
     protected void addColorData(List<EntityData> data) {
         // glow color
-        data.add(new EntityData(21, Types1_19_4.ENTITY_DATA_TYPES.varIntType, getColor().getRGB()));
+        data.add(new EntityData(21, Types1_19_4.ENTITY_DATA_TYPES.varIntType, getColor().asRGB()));
 
         // block data
         data.add(new EntityData(22, Types1_19_4.ENTITY_DATA_TYPES.blockStateType, COLORS.getOrDefault(getColor(), 1)));

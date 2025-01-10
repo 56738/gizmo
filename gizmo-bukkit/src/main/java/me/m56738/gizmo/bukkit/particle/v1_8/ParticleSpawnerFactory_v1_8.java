@@ -1,6 +1,6 @@
 package me.m56738.gizmo.bukkit.particle.v1_8;
 
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawner;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawnerFactory;
 import me.m56738.gizmo.bukkit.util.ReflectionUtil;
@@ -54,7 +54,7 @@ public class ParticleSpawnerFactory_v1_8 implements ParticleSpawnerFactory {
     }
 
     public void sendParticle(Object connection, Vector3dc position, GizmoColor color) {
-        Color bukkitColor = Color.fromRGB(color.getRGB());
+        Color bukkitColor = Color.fromRGB(color.asRGB());
         try {
             Object packet = createPacket.invoke(
                     particleType,

@@ -1,7 +1,7 @@
 package me.m56738.gizmo;
 
 import me.m56738.gizmo.api.Gizmo;
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Quaterniond;

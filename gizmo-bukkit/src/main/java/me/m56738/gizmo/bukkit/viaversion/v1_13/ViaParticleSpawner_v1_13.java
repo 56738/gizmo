@@ -4,7 +4,7 @@ import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.api.protocol.packet.VersionedPacketTransformer;
 import com.viaversion.viaversion.api.type.Types;
 import com.viaversion.viaversion.protocols.v1_12_2to1_13.packet.ClientboundPackets1_13;
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawner;
 import me.m56738.gizmo.bukkit.viaversion.cube.GizmoTracker;
 import org.bukkit.Color;
@@ -28,7 +28,7 @@ public class ViaParticleSpawner_v1_13 implements ParticleSpawner {
             return;
         }
 
-        Color bukkitColor = Color.fromRGB(color.getRGB());
+        Color bukkitColor = Color.fromRGB(color.asRGB());
         transformer.scheduleSend(connection, ClientboundPackets1_13.LEVEL_PARTICLES, wrapper -> {
             wrapper.write(Types.INT, 11);
             wrapper.write(Types.BOOLEAN, true); // long distance

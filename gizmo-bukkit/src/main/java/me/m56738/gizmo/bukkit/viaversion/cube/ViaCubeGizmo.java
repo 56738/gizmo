@@ -2,7 +2,7 @@ package me.m56738.gizmo.bukkit.viaversion.cube;
 
 import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.api.minecraft.entitydata.EntityData;
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.api.cursor.Cursor;
 import me.m56738.gizmo.api.cursor.Intersection;
 import me.m56738.gizmo.cube.CubeGizmo;

@@ -1,6 +1,6 @@
 package me.m56738.gizmo.bukkit.particle.v1_8;
 
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawner;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawnerFactory;
 import org.bukkit.Color;
@@ -45,7 +45,7 @@ public class SpigotParticleSpawnerFactory_v1_8 implements ParticleSpawnerFactory
 
         @Override
         public void spawnParticle(Vector3dc position, GizmoColor color, double size) {
-            Color bukkitColor = Color.fromRGB(color.getRGB());
+            Color bukkitColor = Color.fromRGB(color.asRGB());
             try {
                 playEffect.invoke(player.spigot(),
                         new Location(player.getWorld(), position.x(), position.y(), position.z()),

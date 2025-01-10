@@ -1,7 +1,7 @@
 package me.m56738.gizmo.bukkit.particle;
 
 import me.m56738.gizmo.AbstractLineGizmo;
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import org.jetbrains.annotations.ApiStatus;
 import org.joml.Math;
 import org.joml.Vector3d;

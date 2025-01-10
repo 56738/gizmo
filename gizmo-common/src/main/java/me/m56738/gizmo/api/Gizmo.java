@@ -1,5 +1,6 @@
 package me.m56738.gizmo.api;
 
+import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.api.cursor.Cursor;
 import me.m56738.gizmo.api.cursor.Intersection;
 import org.jetbrains.annotations.NotNull;

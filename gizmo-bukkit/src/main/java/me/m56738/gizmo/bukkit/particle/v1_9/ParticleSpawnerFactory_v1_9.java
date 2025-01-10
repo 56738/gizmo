@@ -1,6 +1,6 @@
 package me.m56738.gizmo.bukkit.particle.v1_9;
 
-import me.m56738.gizmo.api.GizmoColor;
+import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawner;
 import me.m56738.gizmo.bukkit.particle.ParticleSpawnerFactory;
 import org.bukkit.Color;
@@ -32,7 +32,7 @@ public class ParticleSpawnerFactory_v1_9 implements ParticleSpawnerFactory {
 
         @Override
         public void spawnParticle(Vector3dc position, GizmoColor color, double size) {
-            Color bukkitColor = Color.fromRGB(color.getRGB());
+            Color bukkitColor = Color.fromRGB(color.asRGB());
             player.spawnParticle(
                     Particle.REDSTONE,
                     position.x(), position.y(), position.z(),

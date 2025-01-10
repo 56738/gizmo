@@ -1,6 +1,7 @@
 package me.m56738.gizmo.api;
 
 import me.m56738.gizmo.AbstractBoxGizmo;
+import me.m56738.gizmo.api.color.GizmoColor;
 import org.joml.Quaterniondc;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
