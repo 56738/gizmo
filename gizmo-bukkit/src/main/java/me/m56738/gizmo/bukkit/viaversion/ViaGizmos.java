@@ -23,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 @ApiStatus.Internal
 public class ViaGizmos implements BukkitGizmos {
+    private static final int MAJOR_VERSION = 5;
     private static @Nullable EntityIdProvider ID_PROVIDER;
 
     static {
@@ -42,6 +43,14 @@ public class ViaGizmos implements BukkitGizmos {
         this.transformer_v1_13 = Via.getManager().getProtocolManager().createPacketTransformer(ProtocolVersion.v1_13, ClientboundPackets1_13.class, null);
         this.transformer_v1_19_4 = Via.getManager().getProtocolManager().createPacketTransformer(ProtocolVersion.v1_19_4, ClientboundPackets1_19_4.class, null);
         this.transformer_v1_20_2 = Via.getManager().getProtocolManager().createPacketTransformer(ProtocolVersion.v1_20_2, ClientboundPackets1_20_2.class, null);
+    }
+
+    public static boolean isSupported() {
+        try {
+            return Via.getAPI().majorVersion() == MAJOR_VERSION;
+        } catch (Throwable e) {
+            return false;
+        }
     }
 
     public static @NotNull ViaGizmos create(@NotNull BukkitGizmos fallback) {

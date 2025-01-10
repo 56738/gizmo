@@ -22,6 +22,16 @@ public class DisplayGizmos implements BukkitGizmos {
         plugin.getServer().getPluginManager().registerEvents(this.listener, plugin);
     }
 
+    public static boolean isSupported() {
+        try {
+            Class.forName("org.bukkit.entity.BlockDisplay");
+            new JOMLMapper();
+            return true;
+        } catch (Throwable e) {
+            return false;
+        }
+    }
+
     public static @NotNull DisplayGizmos create(@NotNull Plugin plugin) {
         try {
             return new DisplayGizmos(plugin, new JOMLMapper());

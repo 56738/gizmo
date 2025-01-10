@@ -3,7 +3,6 @@ annotations = "24.0.0"
 joml = "1.10.8"
 spigot = "1.19.4-R0.1-SNAPSHOT"
 viaversion = "5.2.1"
-shadow = "9.0.0-beta4"
 
 [libraries]
 annotations = { module = "org.jetbrains:annotations", version.ref = "annotations" }
@@ -11,6 +10,3 @@ joml = { module = "org.joml:joml", version.ref = "joml" }
 spigot-api = { module = "org.spigotmc:spigot-api", version.ref = "spigot" }
 viaversion-api = { module = "com.viaversion:viaversion-api", version.ref = "viaversion" }
 viaversion-common = { module = "com.viaversion:viaversion-common", version.ref = "viaversion" }
-
-[plugins]
-shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
