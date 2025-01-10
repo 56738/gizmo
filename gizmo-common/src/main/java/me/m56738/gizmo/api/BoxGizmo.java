@@ -1,5 +1,6 @@
 package me.m56738.gizmo.api;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
@@ -7,6 +8,7 @@ import org.joml.Vector3dc;
 import java.util.List;
 import java.util.function.Supplier;
 
+@ApiStatus.NonExtendable
 public interface BoxGizmo extends Gizmo {
     @NotNull Vector3dc DEFAULT_SIZE = new Vector3d();
     double DEFAULT_WIDTH = LineGizmo.DEFAULT_WIDTH;

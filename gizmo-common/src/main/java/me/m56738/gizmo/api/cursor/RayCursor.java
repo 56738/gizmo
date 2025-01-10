@@ -1,6 +1,7 @@
 package me.m56738.gizmo.api.cursor;
 
 import me.m56738.gizmo.intersection.SimpleIntersection;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Intersectiond;
@@ -10,6 +11,7 @@ import org.joml.Vector2d;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
 
+@ApiStatus.NonExtendable
 public interface RayCursor extends Cursor {
     static @NotNull RayCursor of(@NotNull Vector3dc origin, @NotNull Vector3dc direction, double length) {
         Vector3d normalizedDirection = direction.normalize(new Vector3d());

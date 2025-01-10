@@ -1,10 +1,12 @@
 package me.m56738.gizmo.api.cursor;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
+@ApiStatus.NonExtendable
 public interface Cursor {
     @Nullable Intersection intersectPoint(@NotNull Vector3dc position, double threshold);
 

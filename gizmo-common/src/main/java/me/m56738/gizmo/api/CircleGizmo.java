@@ -1,11 +1,13 @@
 package me.m56738.gizmo.api;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
+@ApiStatus.NonExtendable
 public interface CircleGizmo extends Gizmo {
     @NotNull GizmoAxis DEFAULT_AXIS = GizmoAxis.Y;
     double DEFAULT_RADIUS = 1.0;

@@ -1,7 +1,9 @@
 package me.m56738.gizmo.api;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+@ApiStatus.NonExtendable
 public interface LineGizmo extends Gizmo {
     @NotNull GizmoAxis DEFAULT_AXIS = GizmoAxis.Y;
     double DEFAULT_LENGTH = 1.0;

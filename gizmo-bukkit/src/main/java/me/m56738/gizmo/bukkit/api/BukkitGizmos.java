@@ -6,8 +6,10 @@ import me.m56738.gizmo.bukkit.particle.ParticleGizmos;
 import me.m56738.gizmo.bukkit.viaversion.ViaGizmos;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
+@ApiStatus.NonExtendable
 public interface BukkitGizmos extends AutoCloseable {
     static @NotNull BukkitGizmos create(@NotNull Plugin plugin) {
         BukkitGizmos gizmos;

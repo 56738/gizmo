@@ -3,11 +3,13 @@ package me.m56738.gizmo.api;
 import me.m56738.gizmo.api.color.GizmoColor;
 import me.m56738.gizmo.api.cursor.Cursor;
 import me.m56738.gizmo.api.cursor.Intersection;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
+@ApiStatus.NonExtendable
 public interface Gizmo {
     @NotNull GizmoColor DEFAULT_COLOR = GizmoColor.WHITE;
 
