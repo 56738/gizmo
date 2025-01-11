@@ -2,6 +2,9 @@ package me.m56738.gizmo.bukkit.display;
 
 import me.m56738.gizmo.api.GizmoFactory;
 import me.m56738.gizmo.bukkit.api.BukkitGizmos;
+import me.m56738.gizmo.bukkit.display.v1_19_4.DisplayCubeGizmoFactory_v1_19_4;
+import me.m56738.gizmo.bukkit.display.v1_20_2.DisplayCubeGizmoFactory_v1_20_2;
+import me.m56738.gizmo.bukkit.display.v1_20_2.DisplayCubeGizmo_v1_20_2;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -13,11 +16,13 @@ import org.jetbrains.annotations.NotNull;
 public class DisplayGizmos implements BukkitGizmos {
     private final Plugin plugin;
     private final JOMLMapper mapper;
+    private final DisplayCubeGizmoFactoryProvider provider;
     private final Listener listener;
 
-    private DisplayGizmos(Plugin plugin, JOMLMapper mapper) {
+    private DisplayGizmos(Plugin plugin, JOMLMapper mapper, DisplayCubeGizmoFactoryProvider provider) {
         this.plugin = plugin;
         this.mapper = mapper;
+        this.provider = provider;
         this.listener = new DisplayListener();
         plugin.getServer().getPluginManager().registerEvents(this.listener, plugin);
     }
@@ -33,8 +38,15 @@ public class DisplayGizmos implements BukkitGizmos {
     }
 
     public static @NotNull DisplayGizmos create(@NotNull Plugin plugin) {
+        DisplayCubeGizmoFactoryProvider provider;
+        if (DisplayCubeGizmo_v1_20_2.isSupported()) {
+            provider = DisplayCubeGizmoFactory_v1_20_2::new;
+        } else {
+            provider = DisplayCubeGizmoFactory_v1_19_4::new;
+        }
+
         try {
-            return new DisplayGizmos(plugin, new JOMLMapper());
+            return new DisplayGizmos(plugin, new JOMLMapper(), provider);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -42,7 +54,7 @@ public class DisplayGizmos implements BukkitGizmos {
 
     @Override
     public @NotNull GizmoFactory player(@NotNull Player player) {
-        return new DisplayCubeGizmoFactory(player, plugin, mapper);
+        return provider.createFactory(player, plugin, mapper);
     }
 
     @Override

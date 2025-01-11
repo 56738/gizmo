@@ -1,14 +1,17 @@
-package me.m56738.gizmo.bukkit.display;
+package me.m56738.gizmo.bukkit.display.v1_19_4;
 
 import me.m56738.gizmo.AbstractCubeGizmo;
 import me.m56738.gizmo.api.color.GizmoColor;
+import me.m56738.gizmo.bukkit.display.JOMLMapper;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.BlockDisplay;
 import org.bukkit.entity.Display;
 import org.bukkit.entity.Display.Billboard;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
@@ -20,17 +23,19 @@ import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodType;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.function.Consumer;
 
 import static java.lang.invoke.MethodHandles.publicLookup;
-import static java.lang.invoke.MethodType.methodType;
 
 @ApiStatus.Internal
-public class DisplayCubeGizmo extends AbstractCubeGizmo {
+public class DisplayCubeGizmo_v1_19_4 extends AbstractCubeGizmo {
     private static final Quaterniondc IDENTITY = new Quaterniond();
     private static final Map<GizmoColor, BlockData> COLORS = new HashMap<>();
-    private static final MethodHandle TELEPORT_DURATION_SETTER = findTeleportDurationSetter();
+    private static final MethodHandle spawnHandle = findSpawnHandle();
 
     static {
         COLORS.put(GizmoColor.WHITE, Material.WHITE_CONCRETE.createBlockData());
@@ -47,36 +52,25 @@ public class DisplayCubeGizmo extends AbstractCubeGizmo {
     private final JOMLMapper mapper;
     private @Nullable BlockDisplay entity;
 
-    public DisplayCubeGizmo(Player player, Plugin plugin, JOMLMapper mapper) {
+    public DisplayCubeGizmo_v1_19_4(Player player, Plugin plugin, JOMLMapper mapper) {
         this.player = player;
         this.plugin = plugin;
         this.mapper = mapper;
     }
 
-    @SuppressWarnings("JavaLangInvokeHandleSignature")
-    private static MethodHandle findTeleportDurationSetter() {
+    @SuppressWarnings({"JavaLangInvokeHandleSignature", "deprecation"})
+    private static MethodHandle findSpawnHandle() {
         try {
-            return publicLookup().findVirtual(Display.class, "setTeleportDuration", methodType(void.class, int.class));
-        } catch (ReflectiveOperationException e) {
-            return null;
-        }
-    }
-
-    private static void setTeleportDuration(Display entity, int duration) {
-        if (TELEPORT_DURATION_SETTER == null) {
-            return;
-        }
-        try {
-            TELEPORT_DURATION_SETTER.invoke(entity, duration);
+            return publicLookup().findVirtual(World.class, "spawn", MethodType.methodType(Entity.class, Location.class, Class.class, org.bukkit.util.Consumer.class));
         } catch (Throwable e) {
-            throw new RuntimeException(e);
+            return null;
         }
     }
 
     @SuppressWarnings("UnstableApiUsage")
     @Override
     public void show() {
-        entity = player.getWorld().spawn(getLocation(), BlockDisplay.class, this::configure);
+        entity = spawn(player.getWorld(), getLocation(), this::configure);
         if (plugin.isEnabled()) {
             player.showEntity(plugin, entity);
         }
@@ -112,15 +106,24 @@ public class DisplayCubeGizmo extends AbstractCubeGizmo {
         return new Location(player.getWorld(), position.x(), position.y(), position.z());
     }
 
+    @SuppressWarnings("deprecation")
+    protected @NotNull BlockDisplay spawn(@NotNull World world, @NotNull Location location, @NotNull Consumer<BlockDisplay> consumer) {
+        Objects.requireNonNull(spawnHandle);
+        try {
+            return (BlockDisplay) spawnHandle.invoke(
+                    world, location, BlockDisplay.class, (org.bukkit.util.Consumer<BlockDisplay>) this::configure);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @SuppressWarnings("UnstableApiUsage")
     protected void configure(@NotNull BlockDisplay entity) {
         entity.setPersistent(false);
         entity.setVisibleByDefault(false);
         entity.setMetadata("gizmo", new FixedMetadataValue(plugin, this));
-        entity.setInterpolationDuration(3);
         entity.setBrightness(new Display.Brightness(15, 15));
         entity.setGlowing(true);
-        setTeleportDuration(entity, 3);
         update(entity);
     }
 
@@ -130,6 +133,5 @@ public class DisplayCubeGizmo extends AbstractCubeGizmo {
         entity.setGlowColorOverride(Color.fromRGB(color.asRGB()));
         entity.setTransformation(mapper.createTransformation(getOffset(), getRotation(), getScale(), IDENTITY));
         entity.setBillboard(isBillboard() ? Billboard.CENTER : Billboard.FIXED);
-        entity.setInterpolationDelay(0);
     }
 }

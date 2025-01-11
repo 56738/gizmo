@@ -1,7 +1,7 @@
 [versions]
 annotations = "24.0.0"
 joml = "1.10.8"
-spigot = "1.19.4-R0.1-SNAPSHOT"
+spigot = "1.20.2-R0.1-SNAPSHOT"
 viaversion = "5.2.1"
 
 [libraries]
