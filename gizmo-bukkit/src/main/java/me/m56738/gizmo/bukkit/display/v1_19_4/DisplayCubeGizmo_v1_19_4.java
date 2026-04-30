@@ -97,6 +97,7 @@ public class DisplayCubeGizmo_v1_19_4 extends AbstractCubeGizmo {
         if (plugin.isEnabled()) {
             player.hideEntity(plugin, entity);
         }
+        entity.removeMetadata("gizmo", plugin);
         entity.remove();
         entity = null;
     }
