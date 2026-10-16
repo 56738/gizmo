@@ -9,5 +9,13 @@
   },
   "ignorePaths": [
     "gradle/libs.versions.toml"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "java-version"
+      ],
+      "enabled": false
+    }
   ]
 }
